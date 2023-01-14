@@ -1,0 +1,356 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital@1&family=Roboto+Flex:opsz,wght@8..144,500&family=Roboto+Mono:ital,wght@1,500&display=swap");
+body {
+  background: url("https://images.hdqwalls.com/wallpapers/windows-11-green-ji.jpg")
+    no-repeat center;
+  background-size: cover;
+  width: 100vw; /*dont forget on width use vw not vh*/
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+* {
+  box-sizing: border-box;
+}
+.nav {
+  height: 10%;
+  background: rgba(0, 0, 0, 0.43);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.music-icon {
+  color: rgba(255, 255, 255, 0.8);
+}
+.solid-text {
+  float: left;
+  padding: 0;
+  position: relative;
+  font-size: 2em;
+  color: rgb(110, 8, 119);
+  margin-left: 10px;
+  font-weight: 600;
+  text-align: center;
+  /* width: 10%; */
+  width: 91px;
+}
+.main-text {
+  color: inherit;
+  font-size: 2rem;
+}
+.solid-text:hover .main-text {
+  opacity: 0;
+}
+.solid-text::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 100px;
+  display: block;
+  height: 0.5em;
+  top: 11%;
+  line-height: 0.8; /* use the line height 0 to get the bottom part of text*/
+  overflow: hidden;
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+  opacity: 0;
+  z-index: -1;
+  transition: transform 0.8s;
+}
+.solid-text::after {
+  content: attr(data-text);
+  position: absolute; /*make sure to use the position absolute*/
+  width: 100%;
+  top: 55%;
+  display: block;
+  height: 0.5em;
+  line-height: 0.1; /* use the line height 0 to get the bottom part of text*/
+  overflow: hidden;
+  font-weight: 600;
+  text-align: center;
+  opacity: 0;
+  z-index: -1;
+  transition: transform 0.8s;
+}
+
+.solid-text:hover::before {
+  transform: skewX(15deg);
+  opacity: 1;
+}
+.solid-text:hover::after {
+  transform: skewX(15deg);
+  opacity: 1;
+}
+.middle-line {
+  height: 6%;
+  background: white;
+  border-radius: 4px;
+  position: absolute;
+  inset: 100%;
+  top: 50%;
+  transition: inset 0.6s;
+}
+.solid-text:hover .middle-line {
+  inset: 0;
+  top: 57%;
+}
+
+i {
+  font-size: 20px;
+  margin-left: 20px;
+}
+.search_bar_container {
+  position: relative;
+  width: 28%;
+  height: 7%;
+  left: 37%;
+  top: 30%;
+
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.43);
+  border-radius: 35px;
+  transition: all 0.4s, transform 1s;
+  transition-delay: 0.5s;
+}
+#searchbar {
+  color: rgb(74, 37, 110);
+  width: 82%;
+  height: 100%;
+  padding-left: 10px;
+  background: transparent;
+  font-size: 1.1em;
+  outline: none;
+  border: none;
+}
+#search-button {
+  position: absolute;
+  right: 4%;
+  bottom: 25%;
+  background: transparent;
+  border: none;
+}
+.search-icon {
+  color: rgb(102, 51, 153);
+}
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  appearance: none; /* use this selector to remove the x */
+  -webkit-appearance: none;
+}
+.song_options {
+  position: relative;
+  margin-top: 10px;
+  min-height: 300px;
+}
+.song_options li {
+  position: absolute;
+  width: 100%;
+  height: 70px;
+  opacity: 0;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  list-style: none; /* to remove the dot*/
+  border-radius: 15px;
+  margin-left: -38px;
+  margin-bottom: 10px;
+  /* transition: 2s;
+  transition-delay: 0s; */
+}
+
+.song_options > li > img {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  transform: translate(20%, 20%);
+  opacity: 0.95;
+  margin: 0;
+  box-shadow: 3px 0 20px rgba(0, 0, 0, 0.7);
+}
+.song_options > li > div {
+  position: relative;
+  /* display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden; */
+  width: 80%;
+  font-family: "Poppins";
+  font-size: 0.8em;
+  font-weight: 650;
+  overflow: hidden;
+  left: 19%;
+  bottom: 30px;
+}
+.song_options > li > div > p {
+  width: fit-content;
+  white-space: nowrap;
+}
+.song_options > li > .marquee > p {
+  position: relative;
+  width: fit-content;
+  white-space: nowrap;
+  left: 100%;
+  animation: marquee linear infinite;
+}
+@keyframes marquee {
+  100% {
+    left: 0;
+    transform: translateX(-100%);
+  }
+}
+
+.song_options li:nth-child(1) {
+  z-index: 4;
+  top: 0;
+  transition: opacity 3s 3.2s, transform 1s, height 1s;
+}
+
+.song_options li:nth-child(2) {
+  z-index: 3;
+  top: 0;
+  transition: opacity 3s 2.5s, top 0.6s 2.5s ease-in, transform 1s, height 1s;
+  /* transition-delay: 2.5s; */
+}
+.song_options li:nth-child(3) {
+  z-index: 2;
+  top: 0;
+  transition: opacity 3s 1.5s, top 1s 1.5s ease-in, transform 1s, height 1s;
+}
+.song_options li:nth-child(4) {
+  z-index: 1;
+  top: 0;
+  transition: opacity 3s 0.7s, top 1.5s 0.7s ease-in, transform 1s, height 1s;
+}
+.song_options li:nth-child(5) {
+  top: 0;
+  transition: opacity 3s, top 1.5s ease-in, transform 1s, height 1s;
+}
+.song_options li.appear {
+  opacity: 1;
+  margin: 0;
+  left: 0;
+}
+.song_options li.appear:nth-child(2) {
+  top: 25.5%;
+}
+.song_options li.appear:nth-child(3) {
+  top: 50.5%;
+}
+.song_options li.appear:nth-child(4) {
+  top: 75.5%;
+}
+.song_options li.appear:nth-child(5) {
+  top: 100.5%;
+}
+
+.song_options:has(li.iframe) li:not(li.iframe) {
+}
+
+.song_options li.iframe {
+  height: 121px;
+  z-index: 0; /*this solved the overlaping (unable to click  below), because z-index of this element was higher than the other below*/
+}
+.song_options li.iframe ~ li {
+  transform: translateY(75%);
+}
+.upAndDown_container {
+  display: flex;
+  gap: 5px;
+  justify-content: space-around;
+  align-items: flex-end;
+  width: 200px;
+  height: 200px;
+  margin-left: 50px;
+  border-radius: 20px;
+}
+
+.upAndDown_container * {
+  width: 30%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 20%;
+  background-color: green;
+}
+.upAndDown_container > div:nth-child(2) {
+  height: 60%;
+  background-color: red;
+}
+.upAndDown_container > div:nth-child(1) {
+  height: 40%;
+  background-color: blue;
+}
+.iframe_container {
+  position: absolute;
+  border-radius: 5px;
+  top: 57%;
+  left: 5%;
+  width: 250px;
+  height: 260px;
+  transition: 0.5s;
+}
+.songNotFound {
+  color: white;
+  position: absolute;
+  left: 25%;
+  font-family: "Roboto Flex";
+  font-size: 1.3em;
+}
+iframe {
+  position: relative;
+  width: 120%;
+  margin: 0;
+  border: none;
+  opacity: 0;
+  transition: 0.5s;
+  z-index: 5;
+}
+
+iframe.animation {
+  opacity: 1;
+}
+
+@media (max-width: 1050px) {
+  .search_bar_container {
+    width: 50%;
+  }
+  iframe {
+    width: 86%;
+  }
+}
+@media (max-width: 950px) {
+  .search_bar_container {
+    width: 50%;
+    left: 44%;
+    top: 20%; /*bottom property does not work because top is used in the main selector of search_bar_container*/
+  }
+  .iframe_container {
+    position: absolute;
+    left: 2%;
+    transform: translateY(-1%);
+  }
+}
+@media (max-width: 600px) {
+  .search_bar_container {
+    width: 80%;
+    left: 10%;
+    top: 20%;
+  }
+  .iframe_container {
+    width: 60%;
+    left: 38%;
+    top: 10px;
+    height: 60px;
+    /* display: none; */
+  }
+  .iframe_container iframe {
+    width: 100%;
+    height: 100%;
+  }
+  li iframe {
+    width: 94%;
+    height: 45%;
+    transform: translateY(-65%);
+    left: 1%;
+  }
+}
